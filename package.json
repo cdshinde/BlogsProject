@@ -1,0 +1,31 @@
+{
+  "name": "blog-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install": "concurrently \"npm:install-server\" \"npm:install-client\"",
+    "watch-server": "npm run watch --prefix server",
+    "server": "npm run start --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "concurrently \"npm:watch-server\" \"npm:client\"",
+    "start": "concurrently \"npm:server\" \"npm:client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdshinde/BlogsProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cdshinde/BlogsProject/issues"
+  },
+  "homepage": "https://github.com/cdshinde/BlogsProject#readme",
+  "description": "",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
