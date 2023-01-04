@@ -5,9 +5,10 @@ const cors = require('cors');
 const blogRouter = require('./routes/blogs.routes');
 
 const app = express();
+app.disable("x-powered-by");
 
 app.use(cors({
-    origin:'http://localhost:3000' //whitelist this url
+    origin:'http://chetanshind-w10:3000' //whitelist this url
 }));
 
 app.use(morgan('combined'));

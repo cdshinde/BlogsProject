@@ -14,7 +14,7 @@ describe('Unit Tests', () => {
 
 describe('Test GET calls', () => {
     const actual = { 'technology': 13, 'national': 4, 'religion': 21 };
-    test('', async () => {
+    test('Get all Categories', async () => {
         const response = await request(app).get('/blogs/query=category')
             expect(response.status).toEqual(200);
             expect(response.body).toEqual(actual);
