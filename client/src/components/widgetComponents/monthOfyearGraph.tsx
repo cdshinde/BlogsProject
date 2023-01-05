@@ -16,7 +16,7 @@ const MonthOfYearGraph = ({ currentRowCount }: { currentRowCount: number }) => {
 
   return (
     <Card
-      title="Blogs for this year"
+      title="Blogs For This Year"
       loading={isLoading}
       style={{ height: "100%" }}
     >

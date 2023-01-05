@@ -18,7 +18,7 @@ const NoOfPostRadarChart = ({
   const { data, isLoading } = useQuery("hashtag-data", getHashtagData);
 
   return (
-    <Card title="hashtags" loading={isLoading} style={{ height: "100%" }}>
+    <Card title="Hashtags" loading={isLoading} style={{ height: "100%" }}>
       <ResponsiveContainer width="100%" height={currentRowCount * 155 - 80}>
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
           <PolarGrid />

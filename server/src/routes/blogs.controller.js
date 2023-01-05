@@ -4,9 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
 
-function httpGetAllBlogs(req, resp){
-    resp.status(200).json(blogs);
-}
 
 async function httpGetBlogsByCategory(req, res){
     const result = await loadAllBlogDataCountByKey('category');
@@ -30,7 +27,6 @@ async function httpGetBlogsByCategory(req, res){
  }
 
 module.exports = {
-    httpGetAllBlogs,
     httpGetBlogsByCategory,
     httpGetBlogsByLanguage,
     httpGetBlogsByHashtag,

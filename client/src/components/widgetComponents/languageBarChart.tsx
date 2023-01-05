@@ -16,7 +16,7 @@ const LanguageBarChart = ({ currentRowCount }: { currentRowCount: number }) => {
 
   return (
     <Card
-      title="Language distribution"
+      title="Language Distribution"
       loading={isLoading}
       style={{ height: "100%" }}
     >

@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "POC for Xyleme",
   "main": "src/server.js",
+  "jest":{
+    "testPathIgnorePatterns": ["__test__"]
+  },
   "scripts": {
     "start": "node src/server.js",
     "watch": "nodemon src/server.js",
-    "test": "jest --coverage --collectCoverageFrom=\"./src/**\"",
+    "test": "jest --coverage --collectCoverageFrom=src/**",
     "test-watch": "jest --watch"
   },
   "keywords": [],

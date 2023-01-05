@@ -13,7 +13,7 @@ function App() {
     },
   });
   return (
-    <div className="App">
+    <div className="App" data-testid="App">
       <MainLayout>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />

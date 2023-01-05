@@ -1,6 +1,6 @@
-const { loadAllBlogDataCountByKey } = require('../models/blogs.model');
+const { loadAllBlogDataCountByKey } = require('../../models/blogs.model');
 
-const app = require('../app');
+const app = require('../../app');
 
 const request = require('supertest');
 

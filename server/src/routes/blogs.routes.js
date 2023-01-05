@@ -4,7 +4,6 @@ const { httpGetAllBlogs, httpGetBlogsByCategory, httpGetBlogsByLanguage, httpGet
 
 const blogsRouter = express.Router();
 
-blogsRouter.get('/blogs/query=all', httpGetAllBlogs);
 blogsRouter.get('/blogs/queryByCategory', httpGetBlogsByCategory);
 blogsRouter.get('/blogs/queryByLanguage', httpGetBlogsByLanguage);
 blogsRouter.get('/blogs/queryByHashtag', httpGetBlogsByHashtag);
