@@ -1,5 +1,5 @@
 import axios from "axios"
-const apiBaseURL = "http://CHETANSHIND-W10:8000/blogs"
+const apiBaseURL = "https://CHETANSHIND-W10:8000/blogs"
 export const getMonthData =async ()=>{
     const {data} = await axios.get(`${apiBaseURL}/queryByMonth`)
     const res = Object.keys(data).map((key)=>({

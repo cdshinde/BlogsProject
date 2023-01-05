@@ -8,7 +8,7 @@ const app = express();
 app.disable("x-powered-by");
 
 app.use(cors({
-    origin:'http://chetanshind-w10:3000' //whitelist this url
+    origin:'https://chetanshind-w10:3000' //whitelist this url
 }));
 
 app.use(morgan('combined'));

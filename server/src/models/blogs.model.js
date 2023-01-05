@@ -1,83 +1,50 @@
 const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
-//const csvdb = require('csv-database');
-
-var blog_data = [];
-//var count_data = 0;
 
 
-function loadBlogData(){
-    return new Promise((resolve, reject) => {
-        fs.createReadStream(path.join(__dirname, '..', '..','data', 'blog.csv'))
-        .pipe(csv())
-        .on('data', (data) => {
-            blog_data.push(JSON.stringify(data));
-            //console.log(data['month']);
-        })
-        .on('error', (err) => {
-            console.log(err);
-            reject(err);
-        })
-        .on('end', () => {
-            console.log("All data loaded "+ blog_data);
-            resolve();
-        });
-    });
-    
-}
+/**
+ * This generic function counts occurances of data by specific column and returns that as a JSON data.
+ * @param {*} key -> the column name that will be used for the processing
+ * @returns 
+ */
+function loadAllBlogDataCountByKey(key){
+    let rowArr = [];
+    let occurrences = {};
 
-
-/* function loadBlogData1(key, value){
     return new Promise((resolve, reject) => {
         fs.createReadStream(path.join(__dirname, '..', '..','data', 'blog.csv'))
         .pipe(csv())
         .on('data', function(chunk){
-            //console.log("1 " +chunk[key]);
-            //console.log("2 " +value);
-            if(chunk[key] == value) count_data++;
+            if(chunk[key])
+                rowArr.push(chunk[key]);
+                
         })
-        .on('error', (err) => {
+        .on('error',(err) => {
             console.log(err);
             reject(err);
         })
         .on('end', () => {
-            console.log(count_data);
-            resolve();
+            console.log(rowArr.length);
+            if(rowArr.length == 0){
+                console.log('No data to return');
+                resolve(occurrences);
+            }else{
+                console.log('Do we have data? '+ rowArr);
+                occurrences = rowArr.reduce(accumulate,{});
+                resolve(occurrences);
+            }
+            
         });
     });    
-} */
-
-/* async function loadBlogDataByCategory(item){
-    blog_data.length = 0;
-    const db = await csvdb(path.join(__dirname, '..', '..','data', 'blog.csv'), ["id","month","category","language","hashtag"], ",");
-    const result = await db.get(item); 
-    return result;
 }
 
-async function loadBlogDataByHashTag(item){
-    blog_data.length = 0;
-    const db = await csvdb(path.join(__dirname, '..', '..','data', 'blog.csv'), ["id","month","category","language","hashtag"], ",");
-    const result = await db.get(item); 
-    return result;
+function accumulate(accumulator, currentValue) {
+    accumulator[currentValue] ? ++accumulator[currentValue] : accumulator[currentValue] = 1;
+    return accumulator;
 }
-
-async function loadBlogDataByLanguage(item){
-    blog_data.length = 0;
-    const db = await csvdb(path.join(__dirname, '..', '..','data', 'blog.csv'), ["id","month","category","language","hashtag"], ",");
-    const result = await db.get(item); 
-    return result;
-} */
-
-
 
 module.exports = {
-    loadBlogData,
-    // loadBlogDataByCategory,
-    // loadBlogDataByHashTag,
-    // loadBlogDataByLanguage,
-    // loadBlogData1,
-    blogs: blog_data,
-    // count: count_data,
-  };
+    loadAllBlogDataCountByKey,
+}
 
